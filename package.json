@@ -1,6 +1,6 @@
 {
   "name": "telegram-better-auth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Telegram integration for better-auth",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
