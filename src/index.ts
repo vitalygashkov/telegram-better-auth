@@ -1,18 +1,23 @@
-import { createHash, createHmac } from 'node:crypto';
 import type { Account, BetterAuthPlugin, InferOptionSchema, User } from 'better-auth';
 import { createAuthEndpoint, getSessionFromCtx } from 'better-auth/api';
 import { setSessionCookie } from 'better-auth/cookies';
 import { z } from 'zod/v4';
 import { schema } from './schema';
 
-const verifyTelegramData = (botToken: string, data: Record<string, any>) => {
-  const secretKey = createHash('sha256').update(botToken).digest();
+const verifyTelegramData = async (botToken: string, data: Record<string, any>) => {
+  const encoder = new TextEncoder();
+  const botTokenBuffer = encoder.encode(botToken);
+  const secretKey = await crypto.subtle.digest('SHA-256', botTokenBuffer);
   const dataString = Object.keys(data)
     .filter((key) => key !== 'hash')
     .sort()
     .map((key) => `${key}=${data[key]}`)
     .join('\n');
-  const hmac = createHmac('sha256', secretKey).update(dataString).digest('hex');
+  const key = await crypto.subtle.importKey('raw', secretKey, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const signature = await crypto.subtle.sign('HMAC', key, encoder.encode(dataString));
+  const hmac = Array.from(new Uint8Array(signature))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
   return hmac === data.hash;
 };
 
