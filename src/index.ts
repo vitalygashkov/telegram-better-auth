@@ -39,6 +39,8 @@ export interface TelegramOptions {
   redirect?: string;
 }
 
+export { telegramClient } from './client';
+
 export const telegram = (options: TelegramOptions) => {
   return {
     id: 'telegram',
