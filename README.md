@@ -1,6 +1,6 @@
 # Telegram Better Auth
 
-The Telegram plugin for Better Auth allows users to log in with their Telegram account. The plugin provides a simple way to integrate Telegram sign in into your application, handling the client-side and server-side logic for you.
+The Telegram plugin for [Better Auth](https://better-auth.com/) allows users to log in with their Telegram account. The plugin provides a simple way to integrate Telegram sign in into your application, handling the client-side and server-side logic for you.
 
 ## Get your Telegram bot credentials
 
