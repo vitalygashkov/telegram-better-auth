@@ -34,7 +34,9 @@
   "keywords": [
     "telegram",
     "better-auth",
-    "telegram-better-auth"
+    "auth",
+    "authentication",
+    "plugin"
   ],
   "bugs": {
     "url": "https://github.com/vitalygashkov/telegram-better-auth/issues",
