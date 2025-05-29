@@ -1,8 +1,9 @@
 import { createHash, createHmac } from 'node:crypto';
-import type { Account, BetterAuthPlugin, User } from 'better-auth';
+import type { Account, BetterAuthPlugin, InferOptionSchema, User } from 'better-auth';
 import { createAuthEndpoint, getSessionFromCtx } from 'better-auth/api';
 import { setSessionCookie } from 'better-auth/cookies';
 import { z } from 'zod/v4';
+import { schema } from './schema';
 
 const verifyTelegramData = (botToken: string, data: Record<string, any>) => {
   const secretKey = createHash('sha256').update(botToken).digest();
@@ -20,6 +21,7 @@ export interface UserWithUsername extends User {
 }
 
 export interface TelegramOptions {
+  schema?: InferOptionSchema<typeof schema>;
   /**
    * The bot token
    */
