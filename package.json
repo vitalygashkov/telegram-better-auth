@@ -17,7 +17,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "scripts": {
     "build": "tsdown ./src/index.ts --format esm,cjs --dts --clean --sourcemap",
