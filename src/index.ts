@@ -3,6 +3,7 @@ import { createAuthEndpoint, getSessionFromCtx } from 'better-auth/api';
 import { setSessionCookie } from 'better-auth/cookies';
 import { z } from 'zod/v4';
 import { schema } from './schema';
+import { mergeSchema } from 'better-auth/db';
 
 const verifyTelegramData = async (botToken: string, data: Record<string, any>) => {
   const encoder = new TextEncoder();
@@ -18,7 +19,7 @@ const verifyTelegramData = async (botToken: string, data: Record<string, any>) =
   const hmac = Array.from(new Uint8Array(signature))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('');
-  return hmac === data.hash;
+  return hmac === data['hash'];
 };
 
 export interface UserWithUsername extends User {
@@ -145,5 +146,6 @@ export const telegram = (options: TelegramOptions) => {
         }
       ),
     },
+    schema: mergeSchema(schema, options?.schema),
   } satisfies BetterAuthPlugin;
 };
