@@ -1,7 +1,7 @@
 import type { Account, BetterAuthPlugin, InferOptionSchema, User } from 'better-auth';
 import { createAuthEndpoint, getSessionFromCtx } from 'better-auth/api';
 import { setSessionCookie } from 'better-auth/cookies';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { schema } from './schema';
 import { mergeSchema } from 'better-auth/db';
 
