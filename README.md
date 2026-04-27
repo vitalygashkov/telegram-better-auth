@@ -2,6 +2,9 @@
 
 The Telegram plugin for [Better Auth](https://better-auth.com/) allows users to log in with their Telegram account. The plugin provides a simple way to integrate Telegram sign in into your application, handling the client-side and server-side logic for you.
 
+> ⚠️ **Important:** This project is no longer maintained.
+> More feature-rich and maintained alternative: [vcode-sh/better-auth-telegram](https://github.com/vcode-sh/better-auth-telegram).
+
 ## Get your Telegram bot credentials
 
 To use Telegram sign in, you need a bot token. The bot must be linked to a domain (this can be done with **/setdomain** command in the [@BotFather](https://t.me/botfather) bot).
